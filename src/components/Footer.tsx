@@ -13,7 +13,7 @@ const Footer = () => {
           filter: 'brightness(0.7)'
         }}
       />
-      <div className="absolute inset-0 bg-primary/70" />
+      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(204, 0, 0, 0.7)' }} />
       
       {/* Content */}
       <div className="relative z-10">
