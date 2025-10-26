@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Building2, Factory, Hammer, TrendingUp, Award, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useCountUp } from "@/hooks/useCountUp";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/hero-construction.jpg";
@@ -38,10 +39,10 @@ const Index = () => {
   ];
 
   const stats = [
-    { value: "20+", label: "سنة من الخبرة" },
-    { value: "400+", label: "موظف متخصص" },
-    { value: "500+", label: "مشروع منجز" },
-    { value: "100%", label: "رضا العملاء" },
+    { value: 20, label: "سنة من الخبرة", suffix: "+" },
+    { value: 400, label: "موظف متخصص", suffix: "+" },
+    { value: 500, label: "مشروع منجز", suffix: "+" },
+    { value: 100, label: "رضا العملاء", suffix: "%" },
   ];
 
   const values = [
@@ -89,14 +90,20 @@ const Index = () => {
       <section className="py-16 bg-muted">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center animate-fade-in">
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
+            {stats.map((stat, index) => {
+              const StatCounter = () => {
+                const { count, elementRef } = useCountUp({ end: stat.value, duration: 2500 });
+                return (
+                  <div ref={elementRef} className="text-center animate-fade-in">
+                    <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                      {count}{stat.suffix}
+                    </div>
+                    <div className="text-muted-foreground">{stat.label}</div>
+                  </div>
+                );
+              };
+              return <StatCounter key={index} />;
+            })}
           </div>
         </div>
       </section>

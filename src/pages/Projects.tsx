@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Building2, MapPin } from "lucide-react";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const Projects = () => {
   const projects = [
@@ -104,12 +105,18 @@ const Projects = () => {
       <section className="py-16 bg-muted/50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {categories.map((category, index) => (
-              <div key={index} className="text-center animate-fade-in">
-                <div className="text-4xl font-bold text-primary mb-2">{category.count}</div>
-                <div className="text-muted-foreground">{category.name}</div>
-              </div>
-            ))}
+            {categories.map((category, index) => {
+              const CategoryCounter = () => {
+                const { count, elementRef } = useCountUp({ end: category.count, duration: 2000 });
+                return (
+                  <div ref={elementRef} key={index} className="text-center animate-fade-in">
+                    <div className="text-4xl font-bold text-primary mb-2">{count}</div>
+                    <div className="text-muted-foreground">{category.name}</div>
+                  </div>
+                );
+              };
+              return <CategoryCounter key={index} />;
+            })}
           </div>
         </div>
       </section>
