@@ -26,6 +26,10 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="شعار عزاز البناء" className="h-14 w-auto" />
+            <div className="flex flex-col">
+              <span className="text-lg font-bold text-foreground leading-tight">مصنع عزاز البناء</span>
+              <span className="text-sm text-muted-foreground leading-tight">للخرسانة الجاهزة</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
