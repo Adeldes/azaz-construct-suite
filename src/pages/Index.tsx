@@ -9,6 +9,7 @@ import heroImage from "@/assets/hero-construction.jpg";
 import concreteImage from "@/assets/concrete-facility.jpg";
 import cementImage from "@/assets/cement-products.jpg";
 import roadsImage from "@/assets/roads-infrastructure.jpg";
+import heroVideo from "@/assets/profile.mp4";
 
 const Index = () => {
   const services = [
@@ -57,16 +58,14 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-overlay" />
-        </div>
+        <video
+          className="absolute inset-0 z-0 w-full h-full object-cover"
+          src={heroVideo}
+          autoPlay
+          loop
+          muted
+        />
+        <div className="absolute inset-0 bg-gradient-overlay" />
 
         <div className="container mx-auto px-4 z-10 text-center text-white animate-fade-in">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
