@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Building2, MapPin } from "lucide-react";
 import { useCountUp } from "@/hooks/useCountUp";
+import heroImage from "@/assets/Azaz008.png";
 
 const Projects = () => {
   const projects = [
@@ -92,8 +93,16 @@ const Projects = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="py-20 gradient-hero text-white">
-        <div className="container mx-auto px-4 text-center animate-fade-in">
+      <section className="relative py-20 text-white flex items-center justify-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${heroImage})`,
+          }}
+        />
+        <div className="absolute inset-0 bg-black/50" />
+
+        <div className="relative container mx-auto px-4 text-center animate-fade-in">
           <h1 className="text-5xl font-bold mb-6">مشاريعنا</h1>
           <p className="text-xl max-w-3xl mx-auto opacity-90">
             سجل حافل من المشاريع الناجحة في مختلف القطاعات

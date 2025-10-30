@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Award, Shield, CheckCircle2, FileCheck } from "lucide-react";
+import heroImage from "@/assets/Azaz005.png";
 
 const Quality = () => {
   const certifications = [
@@ -64,8 +65,16 @@ const Quality = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="py-20 gradient-hero text-white">
-        <div className="container mx-auto px-4 text-center animate-fade-in">
+      <section className="relative py-20 text-white flex items-center justify-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${heroImage})`,
+          }}
+        />
+        <div className="absolute inset-0 bg-black/50" />
+
+        <div className="relative container mx-auto px-4 text-center animate-fade-in">
           <h1 className="text-5xl font-bold mb-6">الجودة والاعتمادات</h1>
           <p className="text-xl max-w-3xl mx-auto opacity-90">
             التزامنا بأعلى معايير الجودة العالمية والاعتمادات الرسمية

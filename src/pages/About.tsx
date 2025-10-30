@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Target, Eye, TrendingUp, Award } from "lucide-react";
+import heroImage from "@/assets/team.png";
 
 const About = () => {
   return (
@@ -9,8 +10,15 @@ const About = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="py-20 gradient-hero text-white">
-        <div className="container mx-auto px-4 text-center animate-fade-in">
+      <section className="relative py-20 text-white flex items-center justify-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${heroImage})`,
+          }}
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative container mx-auto px-4 text-center animate-fade-in">
           <h1 className="text-5xl font-bold mb-6">من نحن</h1>
           <p className="text-xl max-w-3xl mx-auto opacity-90">
             شركة سعودية رائدة في مجال المقاولات العامة والصناعات الإنشائية
@@ -91,7 +99,7 @@ const About = () => {
               </div>
               <h2 className="text-3xl font-bold text-primary">الإنجازات والتميز</h2>
             </div>
-            
+
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
                 واليوم تمتلك شركة عزاز البناء للإنشاءات أسطولاً ضخماً من المعدات الثقيلة والسيارات والشاحنات والخلاطات والمضخات والمركبات المتنوعة، بالإضافة إلى عدد كبير من المرافق والخدمات المساندة.

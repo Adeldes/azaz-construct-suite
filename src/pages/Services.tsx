@@ -1,16 +1,16 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { 
-  Building2, 
-  Route, 
-  Droplets, 
-  Factory, 
-  Boxes, 
+import {
+  Building2,
+  Route,
+  Droplets,
+  Factory,
+  Boxes,
   Construction,
   CheckCircle2
 } from "lucide-react";
-import heroImage from "@/assets/hero-construction.jpg";
+import heroImagePage from "@/assets/Azaz006.png";
 import concreteImage from "@/assets/concrete-facility.jpg";
 import cementImage from "@/assets/cement-products.jpg";
 import roadsImage from "@/assets/roads-infrastructure.jpg";
@@ -28,7 +28,7 @@ const Services = () => {
         "المباني الصحية والزراعية",
         "المباني الصناعية",
       ],
-      image: heroImage,
+      image: cementImage, // Placeholder, you can change this
     },
     {
       icon: Route,
@@ -80,7 +80,7 @@ const Services = () => {
         "التفجير داخل المدن بأمان",
         "معدات قياس الاهتزازات",
       ],
-      image: heroImage,
+      image: concreteImage, // Placeholder, you can change this
     },
     {
       icon: Droplets,
@@ -102,8 +102,16 @@ const Services = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="py-20 gradient-hero text-white">
-        <div className="container mx-auto px-4 text-center animate-fade-in">
+      <section className="relative py-20 text-white flex items-center justify-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage: `url(${heroImagePage})`,
+          }}
+        />
+        <div className="absolute inset-0 bg-black/50" />
+
+        <div className="relative container mx-auto px-4 text-center animate-fade-in">
           <h1 className="text-5xl font-bold mb-6">خدماتنا المتكاملة</h1>
           <p className="text-xl max-w-3xl mx-auto opacity-90">
             نقدم مجموعة شاملة من الخدمات في مجال المقاولات والإنشاءات
