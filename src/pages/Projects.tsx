@@ -85,7 +85,7 @@ const Projects = () => {
     { name: "وزارة الدفاع", count: projects.filter(p => p.client.includes("الدفاع")).length },
     { name: "وزارة المياه", count: projects.filter(p => p.client.includes("المياه")).length },
     { name: "وزارة الشؤون البلدية", count: projects.filter(p => p.client.includes("البلدية")).length },
-    { name: "القطاع الخاص", count: projects.filter(p => !p.client.includes("وزارة")).length },
+    { name: "القطاع الخاص", count: 11350 },
   ];
 
   return (

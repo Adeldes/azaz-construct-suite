@@ -195,11 +195,11 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Button size="lg" variant="outline" asChild>
+            <div className="text-center mt-12">
+            <Button size="lg" className="gradient-primary text-white font-semibold transition-smooth hover:shadow-elegant" asChild>
               <Link to="/services">عرض جميع الخدمات</Link>
             </Button>
-          </div>
+            </div>
         </div>
       </section>
 
