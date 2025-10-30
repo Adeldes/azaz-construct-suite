@@ -51,22 +51,17 @@ const Contact = () => {
 
   const locations = [
     {
-      name: "المكتب الرئيسي",
-      city: "خميس مشيط",
-      region: "منطقة عسير",
-    },
-    {
-      name: "مصنع الخرسانة الجاهزة",
-      city: "جدة",
+      name: "الفرع الرئيسي",
+      city: "جدة - المنطقة الصناعية بذهبان",
       region: "المنطقة الغربية",
     },
     {
-      name: "مصنع الخرسانة الجاهزة",
-      city: "عسفان",
+      name: "فرع عسفان",
+      city: "جدة - عسفان",
       region: "المنطقة الغربية",
     },
     {
-      name: "مصنع المنتجات الأسمنتية",
+      name: "فرع الجنوبية",
       city: "خميس مشيط",
       region: "المنطقة الجنوبية",
     },
@@ -214,7 +209,7 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {locations.map((location, index) => (
               <Card key={index} className="shadow-md hover:shadow-elegant transition-smooth animate-fade-in">
                 <CardContent className="p-6 text-center">
@@ -227,6 +222,22 @@ const Contact = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Google Map */}
+          <div className="mt-12 animate-fade-in">
+            <Card className="shadow-elegant overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25386.03430266284!2d39.14411073058048!3d21.907897072115468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15c171006f853fb7%3A0xa8794c1ad67c6ac7!2sAzaz%20albina%20ready%20mix!5e0!3m2!1sen!2ssa!4v1761798665967!5m2!1sen!2ssa"
+                width="100%"
+                height="450"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="موقع الفرع الرئيسي"
+              ></iframe>
+            </Card>
           </div>
         </div>
       </section>
