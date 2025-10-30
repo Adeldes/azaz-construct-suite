@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Building2, Factory, Hammer, TrendingUp, Award, Users } from "lucide-react";
+import { Building2, Factory, Hammer, TrendingUp, Award, Users, Calendar, HardHat, CheckCircle, Smile, PlayCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useCountUp } from "@/hooks/useCountUp";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import heroImage from "@/assets/hero-construction.jpg";
@@ -12,6 +14,8 @@ import roadsImage from "@/assets/roads-infrastructure.jpg";
 import heroVideo from "@/assets/profile.mp4";
 
 const Index = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const services = [
     {
       icon: Building2,
@@ -40,10 +44,10 @@ const Index = () => {
   ];
 
   const stats = [
-    { value: 20, label: "سنة من الخبرة", suffix: "+" },
-    { value: 400, label: "موظف متخصص", suffix: "+" },
-    { value: 500, label: "مشروع منجز", suffix: "+" },
-    { value: 100, label: "رضا العملاء", suffix: "%" },
+    { value: 20, label: "سنة من الخبرة", suffix: "+", icon: Calendar },
+    { value: 400, label: "موظف متخصص", suffix: "+", icon: HardHat },
+    { value: 500, label: "مشروع منجز", suffix: "+", icon: CheckCircle },
+    { value: 100, label: "رضا العملاء", suffix: "%", icon: Smile },
   ];
 
   const values = [
@@ -65,7 +69,7 @@ const Index = () => {
           loop
           muted
         />
-        <div className="absolute inset-0 bg-gradient-overlay" />
+        <div className="absolute inset-0 bg-black/70" />
 
         <div className="container mx-auto px-4 z-10 text-center text-white animate-fade-in">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
@@ -75,7 +79,7 @@ const Index = () => {
             منذ عام 2003، نشيد مسيرة التنمية بجودة لا تُضاهى
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
+            <Button size="lg" className="gradient-primary text-white font-semibold transition-smooth hover:shadow-elegant" asChild>
               <Link to="/services">استكشف خدماتنا</Link>
             </Button>
             <Button size="lg" variant="outline" className="bg-white/10 border-white text-white hover:bg-white/20" asChild>
@@ -86,19 +90,24 @@ const Index = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-muted">
-        <div className="container mx-auto px-4">
+      <section className="relative -mt-20 mb-10">
+        <div className="container mx-auto px-4 z-20">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => {
               const StatCounter = () => {
                 const { count, elementRef } = useCountUp({ end: stat.value, duration: 2500 });
                 return (
-                  <div ref={elementRef} className="text-center animate-fade-in">
-                    <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
-                      {count}{stat.suffix}
-                    </div>
-                    <div className="text-muted-foreground">{stat.label}</div>
-                  </div>
+                  <Card ref={elementRef} className="text-center p-6 shadow-md hover:shadow-elegant transition-smooth animate-fade-in">
+                    <CardContent className="p-0">
+                      <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+                        <stat.icon className="w-8 h-8 text-accent" />
+                      </div>
+                      <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                        {count}{stat.suffix}
+                      </div>
+                      <p className="text-muted-foreground">{stat.label}</p>
+                    </CardContent>
+                  </Card>
                 );
               };
               return <StatCounter key={index} />;
@@ -110,16 +119,46 @@ const Index = () => {
       {/* About Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            <h2 className="text-4xl font-bold mb-6 text-primary">
-              عزاز البناء: جودة، التزام، وشراكة مستدامة
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              نحن لا نكتفي بإنشاء المباني، بل نصنع معايير التميز. في عزاز البناء، تجتمع أحدث التقنيات مع الكفاءات المتخصصة لتقديم منتجات صناعية وخدمات مقاولات بمعايير عالمية. هدفنا الثابت: أن نكون شريكك الأول في تجسيد رؤى البنية التحتية والتطوير العمراني بالمملكة.
-            </p>
-            <Button size="lg" variant="default" className="gradient-primary" asChild>
-              <Link to="/about">اقرأ المزيد عنا</Link>
-            </Button>
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="animate-fade-in-right">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-primary">
+                عزاز البناء: جودة، التزام، وشراكة مستدامة
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                نحن لا نكتفي بإنشاء المباني، بل نصنع معايير التميز. في عزاز البناء، تجتمع أحدث التقنيات مع الكفاءات المتخصصة لتقديم منتجات صناعية وخدمات مقاولات بمعايير عالمية. هدفنا الثابت: أن نكون شريكك الأول في تجسيد رؤى البنية التحتية والتطوير العمراني بالمملكة.
+              </p>
+              <Button size="lg" variant="default" className="gradient-primary text-white font-semibold transition-smooth hover:shadow-elegant" asChild>
+                <Link to="/about">اقرأ المزيد عنا</Link>
+              </Button>
+            </div>
+            <div className="animate-fade-in-left relative">
+              <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+                <DialogTrigger asChild>
+                  <Card className="overflow-hidden shadow-elegant cursor-pointer group">
+                    <div className="relative">
+                      <video
+                        className="w-full h-full object-cover"
+                        src={heroVideo}
+                        muted
+                        loop
+                        autoPlay
+                        playsInline
+                        poster={heroImage}
+                      />
+                      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-colors" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <PlayCircle className="w-20 h-20 text-white/80 group-hover:text-white transition-all transform group-hover:scale-110" />
+                      </div>
+                    </div>
+                  </Card>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl p-0 border-0">
+                  {isModalOpen && (
+                    <video src={heroVideo} controls autoPlay className="w-full h-full rounded-lg" />
+                  )}
+                </DialogContent>
+              </Dialog>
+            </div>
           </div>
         </div>
       </section>
@@ -191,15 +230,38 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 gradient-hero text-white">
-        <div className="container mx-auto px-4 text-center animate-fade-in">
+      <section className="relative py-20 text-white">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${heroImage})` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="relative container mx-auto px-4 text-center animate-fade-in">
           <h2 className="text-4xl font-bold mb-6">لنبدأ مشروعك القادم</h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
             نحن هنا للإجابة عن استفساراتك وتلبية متطلبات مشروعك
           </p>
-          <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground" asChild>
+          <Button size="lg" className="gradient-primary text-white font-semibold transition-smooth hover:shadow-elegant" asChild>
             <Link to="/contact">تواصل معنا الآن</Link>
           </Button>
+        </div>
+      </section>
+
+      {/* Partners Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h3 className="text-center text-2xl font-bold text-primary mb-8">
+            شركاء النجاح
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
+            {/* Replace with actual partner logos */}
+            <img src="https://placehold.co/150x60?text=Partner+1" alt="Partner 1" className="mx-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" />
+            <img src="https://placehold.co/150x60?text=Partner+2" alt="Partner 2" className="mx-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" />
+            <img src="https://placehold.co/150x60?text=Partner+3" alt="Partner 3" className="mx-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" />
+            <img src="https://placehold.co/150x60?text=Partner+4" alt="Partner 4" className="mx-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" />
+            <img src="https://placehold.co/150x60?text=Partner+5" alt="Partner 5" className="mx-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" />
+            <img src="https://placehold.co/150x60?text=Partner+6" alt="Partner 6" className="mx-auto grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" />
+          </div>
         </div>
       </section>
 
