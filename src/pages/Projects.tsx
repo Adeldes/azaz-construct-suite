@@ -112,7 +112,7 @@ const Projects = () => {
         <div className="relative container mx-auto px-4 text-center animate-fade-in">
           <h1 className="text-5xl font-bold mb-6">مشاريعنا</h1>
           <p className="text-xl max-w-3xl mx-auto opacity-90">
-            سجل حافل من المشاريع الناجحة في مختلف القطاعات
+            سجل حافل من الإنجازات النوعية في مختلف قطاعات البنية التحتية والتطوير العمراني
           </p>
         </div>
       </section>
