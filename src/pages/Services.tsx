@@ -14,6 +14,8 @@ import heroImagePage from "@/assets/Azaz006.png";
 import concreteImage from "@/assets/concrete-facility.jpg";
 import cementImage from "@/assets/cement-products.jpg";
 import roadsImage from "@/assets/roads-infrastructure.jpg";
+import kharsanahImage from "@/assets/kharsanah.jpg";
+import InterlockImage from "@/assets/Interlock.jpg";
 
 const Services = () => {
   const services = [
@@ -54,7 +56,7 @@ const Services = () => {
         "شهادة ISO للجودة",
         "محطات متنقلة",
       ],
-      image: concreteImage,
+      image: kharsanahImage,
     },
     {
       icon: Boxes,
@@ -67,7 +69,7 @@ const Services = () => {
         "مصنع بالمنطقة الجنوبية",
         "مصنع بالمنطقة الغربية",
       ],
-      image: cementImage,
+      image: InterlockImage,
     },
     {
       icon: Construction,
