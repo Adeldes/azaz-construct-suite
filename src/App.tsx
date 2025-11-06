@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Projects from "./pages/Projects";
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         <SpeedInsights />
+        <WhatsAppButton />
         <Analytics />
       </BrowserRouter>
     </TooltipProvider>
